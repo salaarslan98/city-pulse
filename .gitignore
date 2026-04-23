@@ -1,0 +1,18 @@
+# Data files
+data/*.duckdb
+data/*.db
+
+# Python
+__pycache__/
+*.pyc
+.env
+*.egg-info/
+dist/
+
+# dbt
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+
+# Prefect
+.prefect/
