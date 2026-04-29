@@ -39,7 +39,8 @@ def initialise_database(conn: duckdb.DuckDBPyConnection) -> None:
             city_id         INTEGER PRIMARY KEY,
             city_name       VARCHAR,
             lat             DOUBLE,
-            lon             DOUBLE
+            lon             DOUBLE,
+            UNIQUE (lat, lon)
             )
         """)
 
@@ -60,7 +61,8 @@ def initialise_database(conn: duckdb.DuckDBPyConnection) -> None:
             temperature_80m   DOUBLE,
             temperature_120m  DOUBLE,
             visibility        DOUBLE,
-            extracted_at      TIMESTAMP
+            extracted_at      TIMESTAMP,
+            UNIQUE (city_id, timestamp)
             )
         """)
 
@@ -74,7 +76,8 @@ def initialise_database(conn: duckdb.DuckDBPyConnection) -> None:
             parameter         VARCHAR,
             value             DOUBLE,
             unit              VARCHAR,
-            extracted_at      TIMESTAMP
+            extracted_at      TIMESTAMP,
+            UNIQUE (location_id, timestamp, parameter)
             )
         """)
 
