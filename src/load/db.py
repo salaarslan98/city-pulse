@@ -40,14 +40,13 @@ def initialise_database(conn: duckdb.DuckDBPyConnection) -> None:
             city_name       VARCHAR,
             lat             DOUBLE,
             lon             DOUBLE,
-            UNIQUE (lat, lon)
+            UNIQUE (city_name, lat, lon)
             )
         """)
 
     
     conn.execute("""
         CREATE TABLE IF NOT EXISTS raw.weather_observations (
-            weather_id        INTEGER PRIMARY KEY,
             city_id           INTEGER,
             timestamp         TIMESTAMP,
             temperature_2m    DOUBLE,
@@ -68,7 +67,6 @@ def initialise_database(conn: duckdb.DuckDBPyConnection) -> None:
 
     conn.execute("""
         CREATE TABLE IF NOT EXISTS raw.air_quality_measurements (
-            aq_id             INTEGER PRIMARY KEY,
             city_id           INTEGER,
             location_id       INTEGER,
             location_name     VARCHAR,
